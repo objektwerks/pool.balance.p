@@ -1,6 +1,6 @@
-Pool Balance
-------------
->Pool cleaning, measurement and chemical balancing app using ScalaFX and Scala 3.
+Pool Balance ( Personal Edition )
+---------------------------------
+>Pool cleaning, measurement and chemical balancing app using Scala 3, ScalaFX and H2.
 
 Build
 -----
