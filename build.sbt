@@ -51,6 +51,7 @@ copyAssemblyJar := {
 // End: Assembly Tasks
 
 // Begin: Assembly
+
 /*
 See assembly section in readme.
 1. sbt -Dtarget="mac" clean test assembly copyAssemblyJar
