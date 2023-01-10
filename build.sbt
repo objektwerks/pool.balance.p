@@ -16,6 +16,8 @@ libraryDependencies ++= {
   )
 }
 
+// Begin: Assembly Tasks
+
 lazy val createAssemblyDir = taskKey[File]("Create assembly dir.")
 createAssemblyDir := {
   import java.nio.file._
@@ -45,6 +47,8 @@ copyAssemblyJar := {
 
   Files.copy(source, target, StandardCopyOption.REPLACE_EXISTING)
 }
+
+// End: Assembly Tasks
 
 /*
 See assembly section in readme.
