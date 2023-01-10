@@ -50,6 +50,7 @@ copyAssemblyJar := {
 
 // End: Assembly Tasks
 
+// Begin: Assembly
 /*
 See assembly section in readme.
 1. sbt -Dtarget="mac" clean test assembly copyAssemblyJar
@@ -80,3 +81,5 @@ assembly / assemblyMergeStrategy := {
   case PathList("META-INF", xs @ _*) => MergeStrategy.discard
   case x => MergeStrategy.first
 }
+
+// End: Assembly
