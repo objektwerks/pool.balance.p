@@ -58,7 +58,7 @@ See assembly section in readme.
 3. sbt -Dtarget="win" clean test assembly copyAssemblyJar
 4. sbt -Dtarget="linux" clean test assembly copyAssemblyJar
 */
-lazy val os: String = sys.props.getOrElse("target", "") match {
+lazy val OS: String = sys.props.getOrElse("target", "") match {
   case name if name.startsWith("mac")   => "mac"
   case name if name.startsWith("m1")    => "mac-aarch64"
   case name if name.startsWith("win")   => "win"
@@ -66,15 +66,15 @@ lazy val os: String = sys.props.getOrElse("target", "") match {
   case _ => ""
 }
 
-if (os == "mac") assemblyJarName := "pool-balance-mac-0.3.jar"
-else if (os == "mac-aarch64") assemblyJarName := "pool-balance-m1-0.3.jar"
-else if (os == "win") assemblyJarName := "pool-balance-win-0.3.jar"
-else if (os == "linux") assemblyJarName := "pool-balance-linux-0.3.jar"
+if (OS == "mac") assemblyJarName := "pool-balance-mac-0.3.jar"
+else if (OS == "mac-aarch64") assemblyJarName := "pool-balance-m1-0.3.jar"
+else if (OS == "win") assemblyJarName := "pool-balance-win-0.3.jar"
+else if (OS == "linux") assemblyJarName := "pool-balance-linux-0.3.jar"
 else assemblyJarName := "pool-balance-no-valid-target-specified-0.3.jar"
 
 lazy val javafxModules = Seq("base", "controls", "web")
 libraryDependencies ++= javafxModules.map( module =>
-  "org.openjfx" % s"javafx-$module" % "19" classifier os
+  "org.openjfx" % s"javafx-$module" % "19" classifier OS
 )
 
 assembly / assemblyMergeStrategy := {
