@@ -4,10 +4,8 @@ import com.typesafe.scalalogging.LazyLogging
 
 import java.text.NumberFormat
 
-import scalafx.Includes.*
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.util.Try
 
 import scalafx.application.Platform
 import scalafx.collections.ObservableBuffer
