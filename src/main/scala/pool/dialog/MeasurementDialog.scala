@@ -2,10 +2,10 @@ package pool.dialog
 
 import scalafx.Includes.*
 import scalafx.scene.layout.Region
-import scalafx.scene.control.{ButtonType, DatePicker, Dialog, TextField}
+import scalafx.scene.control.{ButtonType, DatePicker, Dialog}
 import scalafx.scene.control.ButtonBar.ButtonData
 
-import pool.{App, Context, Entity, Measurement, UnitOfMeasure}
+import pool.{App, Context, Entity, Measurement}
 import pool.Entity.*
 import pool.control.TextSlider.*
 
