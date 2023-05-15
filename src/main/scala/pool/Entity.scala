@@ -3,8 +3,6 @@ package pool
 import java.time.{LocalDate, LocalTime, LocalDateTime}
 import java.time.format.DateTimeFormatter
 
-import math.BigDecimal.double2bigDecimal
-
 import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
 
