@@ -1,7 +1,6 @@
 package pool.dashboard
 
 import pool.Context
-import pool.Measurement
 
 final class TotalBrominePane(context: Context) extends DashboardTitledPane(context):
   text = context.headerTotalBromine
