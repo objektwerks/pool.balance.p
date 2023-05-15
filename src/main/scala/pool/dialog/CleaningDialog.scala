@@ -1,12 +1,11 @@
 package pool.dialog
 
 import scalafx.Includes.*
-import scalafx.collections.ObservableBuffer
 import scalafx.scene.layout.Region
-import scalafx.scene.control.{ButtonType, CheckBox, DatePicker, Dialog, TextField}
+import scalafx.scene.control.{ButtonType, CheckBox, DatePicker, Dialog}
 import scalafx.scene.control.ButtonBar.ButtonData
 
-import pool.{App, Context, Entity, Cleaning, UnitOfMeasure}
+import pool.{App, Context, Entity, Cleaning}
 import pool.Entity.*
 
 final class CleaningDialog(context: Context, cleaning: Cleaning) extends Dialog[Cleaning]:
