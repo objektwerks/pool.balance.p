@@ -3,7 +3,7 @@ package pool.dialog
 import scalafx.Includes.*
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.layout.{Region, VBox}
-import scalafx.scene.control.{ButtonType, ComboBox, DatePicker, Dialog, Separator, TextField}
+import scalafx.scene.control.{ButtonType, ComboBox, DatePicker, Dialog, Separator}
 import scalafx.scene.control.ButtonBar.ButtonData
 
 import pool.{App, Chemical, Context, Entity, UnitOfMeasure, TypeOfChemical}
