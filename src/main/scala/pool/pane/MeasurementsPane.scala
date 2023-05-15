@@ -3,7 +3,6 @@ package pool.pane
 import scala.concurrent.ExecutionContext.Implicits.global
 
 import scalafx.Includes.*
-import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, TableColumn, TableView}
 import scalafx.scene.layout.{HBox, Priority, VBox}
