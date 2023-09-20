@@ -51,6 +51,29 @@ Use Cases
 2. measure pool chemical content
 3. add chemicals to pool
 
+Entity
+------
+* Pool 1 --> * Cleaning | Measurement | Chemical
+
+Model
+-----
+* App 1 --> 1 Context | Store | Model | View
+* Store 1 --> 1 Context
+* Model 1 --> 1 Context | Store
+* View 1 --> 1 Context | Model
+
+UI
+--
+1. Top: dashboard(total chlorine, free chlorine, ph, calcium hardness, total alkalinity, cyanuric acid, total bromine)
+2. Left: pane(pools)
+3. Center: tabbedpane(cleanings, measurements, chemicals)
+
+Charts
+------
+* cleanings - line chart ( x = cleaned, y = ? )
+* measurements - line chart ( x = measured, y = measurement )
+* chemicals - bar chart ( x = added, y = amount/typeof )
+
 Measurements
 ------------
 >Measured in ppm ( parts per million ).
@@ -98,29 +121,6 @@ Solutions
 6. low chlorine - Chlorine Tablets, Granules, Liquid
 7. algae - Algaecide, Shock
 8. stains - Stain Identification Kit, Stain Remover
-
-Entity
-------
-* Pool 1 --> * Cleaning | Measurement | Chemical
-
-Model
------
-* App 1 --> 1 Context | Store | Model | View
-* Store 1 --> 1 Context
-* Model 1 --> 1 Context | Store
-* View 1 --> 1 Context | Model
-
-UI
---
-1. Top: dashboard(total chlorine, free chlorine, ph, calcium hardness, total alkalinity, cyanuric acid, total bromine)
-2. Left: pane(pools)
-3. Center: tabbedpane(cleanings, measurements, chemicals)
-
-Charts
-------
-* cleanings - line chart ( x = cleaned, y = ? )
-* measurements - line chart ( x = measured, y = measurement )
-* chemicals - bar chart ( x = added, y = amount/typeof )
 
 Resources
 ---------
