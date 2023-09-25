@@ -8,7 +8,7 @@ import org.scalatest.matchers.should.Matchers
 final class StoreTest extends AnyFunSuite with Matchers:
   val store = Context( ConfigFactory.load("test.conf") ).store
 
-  test("store") {
+  test("store"):
     var pool = addPool()
     pool = updatePool(pool)
     listPools(pool)
@@ -24,7 +24,6 @@ final class StoreTest extends AnyFunSuite with Matchers:
     var chemical = addChemical(pool)
     chemical = updateChemical(chemical)
     listChemicals(pool, chemical)
-  }
 
   def addPool(): Pool =
     val pool = Pool(name = "pool-a", volume = 10000, unit = UnitOfMeasure.gl)
