@@ -70,15 +70,15 @@ lazy val OS: String = sys.props.getOrElse("target", "") match {
   case _ => ""
 }
 
-if (OS == "mac") assemblyJarName := "pool-balance-mac-0.3.jar"
-else if (OS == "mac-aarch64") assemblyJarName := "pool-balance-m1-0.3.jar"
-else if (OS == "win") assemblyJarName := "pool-balance-win-0.3.jar"
-else if (OS == "linux") assemblyJarName := "pool-balance-linux-0.3.jar"
-else assemblyJarName := "pool-balance-no-valid-target-specified-0.3.jar"
+if (OS == "mac") assemblyJarName := "pool-balance-mac-0.2.jar"
+else if (OS == "mac-aarch64") assemblyJarName := "pool-balance-m1-0.2.jar"
+else if (OS == "win") assemblyJarName := "pool-balance-win-0.2.jar"
+else if (OS == "linux") assemblyJarName := "pool-balance-linux-0.2.jar"
+else assemblyJarName := "pool-balance-no-valid-target-specified-0.2.jar"
 
 lazy val javafxModules = Seq("base", "controls", "web")
 libraryDependencies ++= javafxModules.map( module =>
-  "org.openjfx" % s"javafx-$module" % "19" classifier OS
+  "org.openjfx" % s"javafx-$module" % "20" classifier OS
 )
 
 assembly / assemblyMergeStrategy := {
