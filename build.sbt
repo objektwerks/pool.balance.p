@@ -1,6 +1,6 @@
 name := "pool.balance.p"
 organization := "objektwerks"
-version := "0.2"
+version := "0.3-SNAPSHOT"
 scalaVersion := "3.3.1"
 mainClass := Some("pool.App")
 libraryDependencies ++= {
@@ -70,11 +70,11 @@ lazy val OS: String = sys.props.getOrElse("target", "") match {
   case _ => ""
 }
 
-if (OS == "mac") assemblyJarName := "pool-balance-mac-0.2.jar"
-else if (OS == "mac-aarch64") assemblyJarName := "pool-balance-m1-0.2.jar"
-else if (OS == "win") assemblyJarName := "pool-balance-win-0.2.jar"
-else if (OS == "linux") assemblyJarName := "pool-balance-linux-0.2.jar"
-else assemblyJarName := "pool-balance-no-valid-target-specified-0.2.jar"
+if (OS == "mac") assemblyJarName := "pool-balance-mac-0.3.jar"
+else if (OS == "mac-aarch64") assemblyJarName := "pool-balance-m1-0.3.jar"
+else if (OS == "win") assemblyJarName := "pool-balance-win-0.3.jar"
+else if (OS == "linux") assemblyJarName := "pool-balance-linux-0.3.jar"
+else assemblyJarName := "pool-balance-no-valid-target-specified-0.3.jar"
 
 lazy val javafxModules = Seq("base", "controls", "web")
 libraryDependencies ++= javafxModules.map( module =>
