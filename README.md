@@ -124,11 +124,11 @@ Solutions
 
 Resources
 ---------
-1. [JavaFX](https://openjfx.io/index.html)
-2. [ScalaFX](http://www.scalafx.org/)
-3. [ScalikeJdbc](http://scalikejdbc.org/)
-4. [jDeploy](https://www.jdeploy.com/)
-5. [JavaFX Tutorial](https://jenkov.com/tutorials/javafx/index.html)
+* [JavaFX](https://openjfx.io/index.html)
+* [ScalaFX](http://www.scalafx.org/)
+* [ScalikeJdbc](http://scalikejdbc.org/)
+* [jDeploy](https://www.jdeploy.com/)
+* [JavaFX Tutorial](https://jenkov.com/tutorials/javafx/index.html)
 
 License
 -------
