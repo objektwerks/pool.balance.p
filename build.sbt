@@ -5,7 +5,7 @@ scalaVersion := "3.3.1"
 mainClass := Some("pool.App")
 libraryDependencies ++= {
   Seq(
-    "org.scalafx" %% "scalafx" % "20.0.0-R31",
+    "org.scalafx" %% "scalafx" % "21.0.0-R32",
     "org.scalikejdbc" %% "scalikejdbc" % "4.0.0",
     "com.zaxxer" % "HikariCP" % "5.0.1" exclude("org.slf4j", "slf4j-api"),
     "com.h2database" % "h2" % "2.2.224",
