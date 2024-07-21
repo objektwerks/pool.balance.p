@@ -52,7 +52,7 @@ object Entity:
 final case class Pool(id: Long = 0,
                       name: String = "", 
                       volume: Int = 0,
-                      unit: UnitOfMeasure = UnitOfMeasure.gl) extends Entity:
+                      unit: UnitOfMeasure = UnitOfMeasure.gl) extends Entity derives CanEqual:
   val nameProperty = ObjectProperty[String](this, "name", name)
   val volumeProperty = ObjectProperty[Int](this, "volume", volume)
   val unitProperty = ObjectProperty[String](this, "unit", unit.toString)
