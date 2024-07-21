@@ -6,7 +6,7 @@ import java.time.format.DateTimeFormatter
 import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
 
-final case class Error(message: String, occurred: LocalDateTime = LocalDateTime.now):
+final case class Error(message: String, occurred: LocalDateTime = LocalDateTime.now) derives CanEqual:
   val messageProperty = ObjectProperty[String](this, "message", message)
   val occurredProperty = ObjectProperty[String](this, "occurred", Error.format(occurred))
 
