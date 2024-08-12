@@ -6,7 +6,7 @@ mainClass := Some("pool.App")
 libraryDependencies ++= {
   Seq(
     "org.scalafx" %% "scalafx" % "22.0.0-R33",
-    "org.scalikejdbc" %% "scalikejdbc" % "4.3.0",
+    "org.scalikejdbc" %% "scalikejdbc" % "4.3.1",
     "com.zaxxer" % "HikariCP" % "5.0.1" exclude("org.slf4j", "slf4j-api"),
     "com.h2database" % "h2" % "2.3.230",
     "com.typesafe" % "config" % "1.4.3",
