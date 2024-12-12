@@ -1,7 +1,7 @@
 name := "pool.balance.p"
 organization := "objektwerks"
 version := "0.5-SNAPSHOT"
-scalaVersion := "3.6.2-RC3"
+scalaVersion := "3.6.2"
 mainClass := Some("pool.App")
 libraryDependencies ++= {
   Seq(
