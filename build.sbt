@@ -16,7 +16,7 @@ libraryDependencies ++= {
   )
 }
 scalacOptions ++= Seq(
-  "-Wall"
+  "-Wunused:all"
 )
 
 // Begin: Assembly Tasks
