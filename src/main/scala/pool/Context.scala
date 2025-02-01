@@ -5,7 +5,6 @@ import com.zaxxer.hikari.HikariDataSource
 
 import javax.sql.DataSource
 
-import scala.jdk.CollectionConverters.*
 import scalafx.scene.image.{Image, ImageView}
 
 final class Context(config: Config):
