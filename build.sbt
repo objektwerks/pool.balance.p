@@ -53,35 +53,10 @@ copyAssemblyJar := {
 
 // Begin: Assembly
 
-/*
-See assembly section in readme.
-1. sbt -Dtarget="mac" clean test assembly copyAssemblyJar
-2. sbt -Dtarget="m1" clean test assembly copyAssemblyJar
-3. sbt -Dtarget="win" clean test assembly copyAssemblyJar
-4. sbt -Dtarget="linux" clean test assembly copyAssemblyJar
-*/
-lazy val OS: String = sys.props.getOrElse("target", "") match {
-  case name if name.startsWith("mac")   => "mac"
-  case name if name.startsWith("m1")    => "mac-aarch64"
-  case name if name.startsWith("win")   => "win"
-  case name if name.startsWith("linux") => "linux"
-  case _ => ""
-}
-
-if (OS == "mac") assemblyJarName := "pool-balance-mac-0.5.jar"
-else if (OS == "mac-aarch64") assemblyJarName := "pool-balance-m1-0.5.jar"
-else if (OS == "win") assemblyJarName := "pool-balance-win-0.5.jar"
-else if (OS == "linux") assemblyJarName := "pool-balance-linux-0.5.jar"
-else assemblyJarName := "pool-balance-no-valid-target-specified-0.5.jar"
-
-lazy val javafxModules = Seq("base", "controls", "web")
-libraryDependencies ++= javafxModules.map( module =>
-  "org.openjfx" % s"javafx-$module" % "21" classifier OS
-)
-
+// Begin: Assembly
+assemblyJarName := s"pool-balance-p-${version.value}.jar"
 assembly / assemblyMergeStrategy := {
-  case PathList("META-INF", xs @ _*) => MergeStrategy.discard
+  case PathList("META-INF",  xs @ _*) => MergeStrategy.discard
   case x => MergeStrategy.first
 }
-
 // End: Assembly
