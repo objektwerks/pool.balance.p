@@ -20,11 +20,9 @@ Assembly
 
 Execute
 -------
->To execute an assembled jar locally:
-1. java -jar .assembly/pool-balance-mac-0.5.jar
-3. java -jar .assembly/pool-balance-m1-0.5.jar
-3. java -jar .assembly/pool-balance-win-0.5.jar
-4. java -jar .assembly/pool-balance-linux-0.5.jar
+1. ```java -jar target/scala-3.6.4/gciphers-0.4.jar```
+>or:
+1. ```java -jar .assembly/gciphers-0.4.jar```
 
 Deploy
 ------
