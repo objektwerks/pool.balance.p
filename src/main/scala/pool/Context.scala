@@ -169,7 +169,7 @@ final class Context(config: Config):
   def chartImage = loadImageView("/image/chart.png")
   def errorsImage = loadImageView("/image/errors.png")
 
-  def logo = new Image(Image.getClass.getResourceAsStream("/image/logo.png"))
+  def appIcon = new Image(Image.getClass.getResourceAsStream("/image/icon.png"))
 
   val url = config.getString("db.url")
   val user = config.getString("db.user")
