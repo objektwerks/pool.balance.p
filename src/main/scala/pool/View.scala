@@ -29,13 +29,7 @@ final class View(context: Context):
   VBox.setVgrow(splitPane, Priority.Always)
 
   val vbox = new VBox:
-    prefWidth = context.windowWidth
-    prefHeight = context.windowHeight
-    children = List(
-      menu,
-      dashboardPane,
-      splitPane
-    )
+    children = List(menu, dashboardPane, splitPane)
 
   val scene = new Scene:
     root = vbox
