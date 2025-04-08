@@ -23,7 +23,7 @@ final class View(context: Context):
 
   val splitPane = new SplitPane {
     orientation = Orientation.Horizontal
-    items.addAll(poolsPane, tabbedPane)
+    items ++= List(poolsPane, tabbedPane)
   }
   splitPane.setDividerPositions(0.25, 0.75)
   VBox.setVgrow(splitPane, Priority.Always)
