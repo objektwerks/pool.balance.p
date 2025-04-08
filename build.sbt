@@ -57,7 +57,7 @@ copyAssemblyJar := {
 // Begin: Assembly
 
 // Begin: Assembly
-assemblyJarName := s"pool-balance-p-${version.value}.jar"
+assemblyJarName := s"pool-balance-${version.value}.jar"
 assembly / assemblyMergeStrategy := {
   case PathList("META-INF",  xs @ _*) => MergeStrategy.discard
   case x => MergeStrategy.first
