@@ -15,7 +15,7 @@ object App extends JFXApp3 with LazyLogging:
       title = context.windowTitle
       minWidth = context.windowWidth
       minHeight = context.windowHeight
-      icons.add(context.logo)
+      icons += context.logo
 
     logger.info("App started.")
 
