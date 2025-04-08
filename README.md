@@ -47,6 +47,10 @@ jDeploy Install
 6. Add *jdeploy* and *jdeploy-bundle* to .gitignore
 >See [jDeploy Docs](https://www.jdeploy.com/docs/manual/#_getting_started) for details.
 
+NPM Registry
+------------
+>PoolBalance is deployed to: https://www.npmjs.com/package/poolbalance
+
 Features
 --------
 1. dashboard
