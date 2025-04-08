@@ -5,10 +5,13 @@ import scalafx.scene.Scene
 import scalafx.scene.control.SplitPane
 import scalafx.scene.layout.{BorderPane, HBox, Priority, VBox}
 
+import pool.menu.Menu
 import pool.pane.{PoolsPane, TabbedPane}
 import pool.dashboard.DashboardPane
 
 final class View(context: Context):
+  val menu = Menu(context)
+
   val borderPane = new BorderPane:
     prefWidth = context.windowWidth
     prefHeight = context.windowHeight
