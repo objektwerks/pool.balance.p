@@ -5,9 +5,9 @@ import scalafx.scene.Scene
 import scalafx.scene.control.SplitPane
 import scalafx.scene.layout.{HBox, Priority, VBox}
 
+import pool.dashboard.DashboardPane
 import pool.menu.Menu
 import pool.pane.{PoolsPane, TabbedPane}
-import pool.dashboard.DashboardPane
 
 final class View(context: Context):
   val menu = Menu(context)
