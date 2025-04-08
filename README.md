@@ -37,6 +37,16 @@ Deploy
 9. check email for npm message
 >See [jDeploy Docs](https://www.jdeploy.com/docs/manual/#_getting_started) for details.
 
+jDeploy Install
+---------------
+1. Setup npm account at npmjs.com
+2. Install node, which installs npm, which bundles npx.
+3. Install jdeploy via npm - *npm install -g jdeploy*
+4. Add icon.png ( 256x256 or 512x512 ) to project root and resources.
+5. Edit jDeploy *package.json* as required.
+6. Add *jdeploy* and *jdeploy-bundle* to .gitignore
+>See [jDeploy Docs](https://www.jdeploy.com/docs/manual/#_getting_started) for details.
+
 Features
 --------
 1. dashboard
