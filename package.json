@@ -27,12 +27,12 @@
       "shelljs": "^0.8.4"
   },
   "license": "Apache 2.0",
-  "name": "gciphers",
+  "name": "poolbalance",
   "files": [
       "jdeploy-bundle"
   ],
   "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "homepage": "https://github.com/objektwerks/gciphers"
+  "homepage": "https://github.com/objektwerks/pool.balance.p"
 }
