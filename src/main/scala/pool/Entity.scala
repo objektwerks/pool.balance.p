@@ -13,9 +13,6 @@ final case class Error(message: String, occurred: LocalDateTime = LocalDateTime.
   val messageProperty = ObjectProperty[String](this, "message", message)
   val occurredProperty = ObjectProperty[String](this, "occurred", Error.format(occurred))
 
-enum UnitOfMeasure:
-  case gl, l, lb, kg, tablet
-
 object UnitOfMeasure:
   def toList: List[String] = UnitOfMeasure.values.map(uom => uom.toString).toList
   def toPoolList: List[String] = List( UnitOfMeasure.gl.toString, UnitOfMeasure.l.toString )
@@ -23,6 +20,9 @@ object UnitOfMeasure:
   def litersToGallons(liters: Double): Double = liters * 0.264
   def poundsToKilograms(pounds: Double): Double = pounds * 0.454
   def kilogramsToPounds(kilograms: Double): Double = kilograms * 2.205
+
+enum UnitOfMeasure:
+  case gl, l, lb, kg, tablet
 
 sealed trait Entity:
   val id: Long
