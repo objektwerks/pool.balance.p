@@ -2,7 +2,7 @@ package pool.chart
 
 import javafx.util.Duration
 
-import scalafx.Includes._
+import scalafx.Includes.*
 import scalafx.collections.ObservableBuffer
 import scalafx.geometry.Insets
 import scalafx.scene.Node
