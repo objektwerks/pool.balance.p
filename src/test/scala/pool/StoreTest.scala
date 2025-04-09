@@ -6,7 +6,8 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 final class StoreTest extends AnyFunSuite with Matchers:
-  val store = Context( ConfigFactory.load("test.conf") ).store
+  val context = Context( ConfigFactory.load("test.conf") )
+  val store = Store(context)
 
   test("store"):
     var pool = addPool()

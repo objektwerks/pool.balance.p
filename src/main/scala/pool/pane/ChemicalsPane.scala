@@ -7,14 +7,12 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, TableColumn, TableView}
 import scalafx.scene.layout.{HBox, Priority, VBox}
 
-import pool.{Chemical, Context}
+import pool.{Chemical, Context, Model}
 import pool.dialog.{ChemicalDialog, ChemicalsChartDialog}
 
-final class ChemicalsPane(context: Context) extends VBox:
+final class ChemicalsPane(context: Context, model: Model) extends VBox:
   spacing = 6
   padding = Insets(6)
-
-  val model = context.model
 
   val tableView = new TableView[Chemical]():
     columns ++= List(
@@ -100,4 +98,4 @@ final class ChemicalsPane(context: Context) extends VBox:
           .recover { case error: Throwable => model.onError(error, "Chemical update failed.") }
       case _ =>
 
-  def chart(): Unit = ChemicalsChartDialog(context).showAndWait()
+  def chart(): Unit = ChemicalsChartDialog(context, model).showAndWait()

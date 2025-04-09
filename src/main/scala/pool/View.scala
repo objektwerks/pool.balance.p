@@ -9,16 +9,16 @@ import pool.dashboard.DashboardPane
 import pool.menu.Menu
 import pool.pane.{PoolsPane, TabbedPane}
 
-final class View(context: Context):
+final class View(context: Context, model: Model):
   val menu = Menu(context)
 
-  val dashboardPane = DashboardPane(context)
+  val dashboardPane = DashboardPane(context, model)
   HBox.setHgrow(dashboardPane, Priority.Always)
 
-  val poolsPane = PoolsPane(context)
+  val poolsPane = PoolsPane(context, model)
   VBox.setVgrow(poolsPane, Priority.Always)
 
-  val tabbedPane = TabbedPane(context)
+  val tabbedPane = TabbedPane(context, model)
   VBox.setVgrow(tabbedPane, Priority.Always)
 
   val splitPane = new SplitPane {

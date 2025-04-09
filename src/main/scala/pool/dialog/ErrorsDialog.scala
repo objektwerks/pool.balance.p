@@ -4,14 +4,12 @@ import scalafx.Includes.*
 import scalafx.scene.control.{ButtonType, Dialog, TableColumn, TableView}
 import scalafx.scene.layout.VBox
 
-import pool.{App, Error, Context}
+import pool.{App, Error, Context, Model}
 
-final class ErrorsDialog(context: Context) extends Dialog[Unit]:
+final class ErrorsDialog(context: Context, model: Model) extends Dialog[Unit]:
   initOwner(App.stage)
   title = context.windowTitle
   headerText = context.dialogErrors
-
-  val model = context.model
 
   val tableView = new TableView[Error]():
     columns ++= List(

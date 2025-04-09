@@ -7,14 +7,12 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, Tab, TabPane, TableColumn, TableView}
 import scalafx.scene.layout.{HBox, Priority, VBox}
 
-import pool.{Context, Pool}
+import pool.{Context, Model, Pool}
 import pool.dialog.{ErrorsDialog, PoolDialog}
 
-final class PoolsPane(context: Context) extends VBox:
+final class PoolsPane(context: Context, model: Model) extends VBox:
   spacing = 6
   padding = Insets(6)
-
-  val model = context.model
 
   val tableView = new TableView[Pool]():
     columns ++= List(
@@ -107,5 +105,5 @@ final class PoolsPane(context: Context) extends VBox:
           .recover { case error: Throwable => model.onError(error, "Pool update failed.") }
       case _ =>
 
-  def errors(): Unit = ErrorsDialog(context).showAndWait() match
+  def errors(): Unit = ErrorsDialog(context, model).showAndWait() match
     case _ => errorsButton.disable = model.observableErrors.isEmpty

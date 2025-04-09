@@ -14,9 +14,7 @@ import scalafx.beans.property.ObjectProperty
 import Entity.given
 import Measurement.*
 
-final class Model(context: Context) extends LazyLogging:
-  val store = context.store
-
+final class Model(store: Store) extends LazyLogging:
   val selectedPoolId = ObjectProperty[Long](0)
   val selectedCleaningId = ObjectProperty[Long](0)
   val selectedMeasurementId = ObjectProperty[Long](0)

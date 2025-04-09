@@ -1,9 +1,6 @@
 package pool
 
 import com.typesafe.config.Config
-import com.zaxxer.hikari.HikariDataSource
-
-import javax.sql.DataSource
 
 import scalafx.scene.image.{Image, ImageView}
 
@@ -60,30 +57,48 @@ final class Context(config: Config):
   val converterPounds = config.getString("converter.pounds")
   val converterKilograms = config.getString("converter.kilograms")
 
-  val dashboardTotalChlorineRange = config.getString("dashboard.totalChlorineRange")
-  val dashboardTotalChlorineGood = config.getString("dashboard.totalChlorineGood")
-  val dashboardTotalChlorineIdeal = config.getString("dashboard.totalChlorineIdeal")
-  val dashboardFreeChlorineRange = config.getString("dashboard.freeChlorineRange")
+  val dashboardTotalChlorineRange =
+    config.getString("dashboard.totalChlorineRange")
+  val dashboardTotalChlorineGood =
+    config.getString("dashboard.totalChlorineGood")
+  val dashboardTotalChlorineIdeal =
+    config.getString("dashboard.totalChlorineIdeal")
+  val dashboardFreeChlorineRange =
+    config.getString("dashboard.freeChlorineRange")
   val dashboardFreeChlorineGood = config.getString("dashboard.freeChlorineGood")
-  val dashboardFreeChlorineIdeal = config.getString("dashboard.freeChlorineIdeal")
-  val dashboardCombinedChlorineRange = config.getString("dashboard.combinedChlorineRange")
-  val dashboardCombinedChlorineGood = config.getString("dashboard.combinedChlorineGood")
-  val dashboardCombinedChlorineIdeal = config.getString("dashboard.combinedChlorineIdeal")
+  val dashboardFreeChlorineIdeal =
+    config.getString("dashboard.freeChlorineIdeal")
+  val dashboardCombinedChlorineRange =
+    config.getString("dashboard.combinedChlorineRange")
+  val dashboardCombinedChlorineGood =
+    config.getString("dashboard.combinedChlorineGood")
+  val dashboardCombinedChlorineIdeal =
+    config.getString("dashboard.combinedChlorineIdeal")
   val dashboardPhRange = config.getString("dashboard.phRange")
   val dashboardPhGood = config.getString("dashboard.phGood")
   val dashboardPhIdeal = config.getString("dashboard.phIdeal")
-  val dashboardCalciumHardnessRange = config.getString("dashboard.calciumHardnessRange")
-  val dashboardCalciumHardnessGood = config.getString("dashboard.calciumHardnessGood")
-  val dashboardCalciumHardnessIdeal = config.getString("dashboard.calciumHardnessIdeal")
-  val dashboardTotalAlkalinityRange = config.getString("dashboard.totalAlkalinityRange")
-  val dashboardTotalAlkalinityGood = config.getString("dashboard.totalAlkalinityGood")
-  val dashboardTotalAlkalinityIdeal = config.getString("dashboard.totalAlkalinityIdeal")
-  val dashboardCyanuricAcidRange = config.getString("dashboard.cyanuricAcidRange")
+  val dashboardCalciumHardnessRange =
+    config.getString("dashboard.calciumHardnessRange")
+  val dashboardCalciumHardnessGood =
+    config.getString("dashboard.calciumHardnessGood")
+  val dashboardCalciumHardnessIdeal =
+    config.getString("dashboard.calciumHardnessIdeal")
+  val dashboardTotalAlkalinityRange =
+    config.getString("dashboard.totalAlkalinityRange")
+  val dashboardTotalAlkalinityGood =
+    config.getString("dashboard.totalAlkalinityGood")
+  val dashboardTotalAlkalinityIdeal =
+    config.getString("dashboard.totalAlkalinityIdeal")
+  val dashboardCyanuricAcidRange =
+    config.getString("dashboard.cyanuricAcidRange")
   val dashboardCyanuricAcidGood = config.getString("dashboard.cyanuricAcidGood")
-  val dashboardCyanuricAcidIdeal = config.getString("dashboard.cyanuricAcidIdeal")
-  val dashboardTotalBromineRange = config.getString("dashboard.totalBromineRange")
+  val dashboardCyanuricAcidIdeal =
+    config.getString("dashboard.cyanuricAcidIdeal")
+  val dashboardTotalBromineRange =
+    config.getString("dashboard.totalBromineRange")
   val dashboardTotalBromineGood = config.getString("dashboard.totalBromineGood")
-  val dashboardTotalBromineIdeal = config.getString("dashboard.totalBromineIdeal")
+  val dashboardTotalBromineIdeal =
+    config.getString("dashboard.totalBromineIdeal")
   val dashboardSaltRange = config.getString("dashboard.saltRange")
   val dashboardSaltGood = config.getString("dashboard.saltGood")
   val dashboardSaltIdeal = config.getString("dashboard.saltIdeal")
@@ -176,18 +191,6 @@ final class Context(config: Config):
   val password = config.getString("db.password")
   val dataSourceClassName = config.getString("db.dataSourceClassName")
   val maximumPoolSize = config.getInt("db.maximumPoolSize")
-  val dataSource: DataSource = {
-    val ds = new HikariDataSource()
-    ds.setDataSourceClassName(dataSourceClassName)
-    ds.addDataSourceProperty("url", url)
-    ds.addDataSourceProperty("user", user)
-    ds.addDataSourceProperty("password", password)
-    ds.setMaximumPoolSize(maximumPoolSize)
-    ds
-  }
-
-  val store = Store(this)
-  val model = Model(this)
 
   private def loadImageView(path: String): ImageView = new ImageView:
     image = new Image(Image.getClass.getResourceAsStream(path))
