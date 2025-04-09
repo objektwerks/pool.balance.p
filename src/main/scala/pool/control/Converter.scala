@@ -52,11 +52,12 @@ final class Converter(context: Context) extends GridPane:
 
   val kilogramsTextField = new DoubleTextField:
     text = "1.0"
+
   val kilogramsTextFieldResult = new DoubleTextField:
     style = "-fx-background-color: #ececec;"
     editable = false
     text = format(poundsToKilograms(1.0))
-    
+
   def kilogramsLabel = new Label:
     text = context.converterKilograms
 
