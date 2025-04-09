@@ -6,12 +6,12 @@ import java.time.format.DateTimeFormatter
 import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
 
+object Error:
+  def format(localDateTime: LocalDateTime): String = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd,HH:mm"))
+
 final case class Error(message: String, occurred: LocalDateTime = LocalDateTime.now) derives CanEqual:
   val messageProperty = ObjectProperty[String](this, "message", message)
   val occurredProperty = ObjectProperty[String](this, "occurred", Error.format(occurred))
-
-object Error:
-  def format(localDateTime: LocalDateTime): String = localDateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd,HH:mm"))
 
 enum UnitOfMeasure:
   case gl, l, lb, kg, tablet
