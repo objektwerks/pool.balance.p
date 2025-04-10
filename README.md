@@ -20,9 +20,9 @@ Assembly
 
 Execute
 -------
-1. ```java -jar target/scala-3.6.4/poolbalance-0.5.jar```
+1. ```java -jar target/scala-3.6.4/poolbalance-1.0.0.jar```
 >or:
-1. ```java -jar .assembly/poolbalance-0.5.jar```
+1. ```java -jar .assembly/poolbalance-1.0.0.jar```
 
 Deploy
 ------
