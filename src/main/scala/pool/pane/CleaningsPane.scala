@@ -85,13 +85,12 @@ final class CleaningsPane(context: Context, model: Model) extends VBox:
   VBox.setVgrow(tableView, Priority.Always)
 
   tableView.onMouseClicked = { event =>
-    if (event.getClickCount == 2 && tableView.selectionModel().getSelectedItem != null) update()
+    if (event.getClickCount == 2 && tableView.selectionModel().getSelectedItem != null) then update()
   }
 
   tableView.selectionModel().selectionModeProperty.value = SelectionMode.Single
 
   tableView.selectionModel().selectedItemProperty().addListener { (_, _, selectedItem) =>
-    // model.update executes a remove and add on items. the remove passes a null selectedItem!
     if selectedItem != null then
       model.selectedCleaningId.value = selectedItem.id
       editButton.disable = false
