@@ -48,7 +48,7 @@ final class ChemicalDialog(context: Context, chemical: Chemical) extends Dialog[
   val saveButtonType = new ButtonType(context.buttonSave, ButtonData.OKDone)
   dialogPane().buttonTypes = List(saveButtonType, ButtonType.Cancel)
 
-  resultConverter = dialogButton => {
+  resultConverter = dialogButton =>
     if dialogButton == saveButtonType then
       chemical.copy(
         typeof = TypeOfChemical.toEnum(typeofComboBox.value.value),
@@ -57,4 +57,3 @@ final class ChemicalDialog(context: Context, chemical: Chemical) extends Dialog[
         added = applyLocalDate(addedDatePicker.value.value, chemical.added)
       )
     else null
-  }
