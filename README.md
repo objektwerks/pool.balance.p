@@ -49,7 +49,7 @@ jDeploy Install
 
 NPM Versioning
 --------------
->Your build.sbt file will require a semver 3-digit version number. See: [Npmjs Semver](https://docs.npmjs.com/about-semantic-versioning)
+>The build.sbt will require a semver 3-digit version number. See: [Npmjs Semver](https://docs.npmjs.com/about-semantic-versioning)
 
 NPM Registry
 ------------
