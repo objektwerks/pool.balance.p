@@ -79,7 +79,6 @@ final class PoolsPane(context: Context, model: Model) extends VBox:
   tableView.selectionModel().selectionModeProperty.value = SelectionMode.Single
   
   tableView.selectionModel().selectedItemProperty().addListener { (_, _, selectedItem) =>
-    // model.update executes a remove and add on items. the remove passes a null selectedItem!
     if selectedItem != null then
       model.selectedPoolId.value = selectedItem.id
       editButton.disable = false
