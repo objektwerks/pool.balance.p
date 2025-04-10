@@ -48,7 +48,7 @@ final class CleaningDialog(context: Context, cleaning: Cleaning) extends Dialog[
   val saveButtonType = new ButtonType(context.buttonSave, ButtonData.OKDone)
   dialogPane().buttonTypes = List(saveButtonType, ButtonType.Cancel)
 
-  resultConverter = dialogButton => {
+  resultConverter = dialogButton =>
     if dialogButton == saveButtonType then
       cleaning.copy(
         brush = brushCheckBox.selected.value,
@@ -60,4 +60,3 @@ final class CleaningDialog(context: Context, cleaning: Cleaning) extends Dialog[
         cleaned = applyLocalDate(cleanedDatePicker.value.value, cleaning.cleaned)
       )
     else null
-  }
