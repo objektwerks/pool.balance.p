@@ -60,11 +60,9 @@ final class Context(config: Config):
   val dashboardTotalChlorineRange = config.getString("dashboard.totalChlorineRange")
   val dashboardTotalChlorineGood = config.getString("dashboard.totalChlorineGood")
   val dashboardTotalChlorineIdeal = config.getString("dashboard.totalChlorineIdeal")
-  val dashboardFreeChlorineRange =
-    config.getString("dashboard.freeChlorineRange")
+  val dashboardFreeChlorineRange = config.getString("dashboard.freeChlorineRange")
   val dashboardFreeChlorineGood = config.getString("dashboard.freeChlorineGood")
-  val dashboardFreeChlorineIdeal =
-    config.getString("dashboard.freeChlorineIdeal")
+  val dashboardFreeChlorineIdeal = config.getString("dashboard.freeChlorineIdeal")
   val dashboardCombinedChlorineRange =
     config.getString("dashboard.combinedChlorineRange")
   val dashboardCombinedChlorineGood =
