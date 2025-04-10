@@ -87,34 +87,34 @@ final class Model(store: Store) extends LazyLogging:
 
   def pools(): Unit =
     Future {
-      shouldNotBeInFxThread("pools should not be in fx thread.")
+      shouldNotBeInFxThread("pools should not be in fx thread")
       observablePools ++= store.pools()
     }.recover { case error: Throwable => onError(error, s"Loading pools data failed: ${error.getMessage}") }
 
   def cleanings(poolId: Long): Unit =
     Future {
-      shouldNotBeInFxThread("cleanings should not be in fx thread.")
+      shouldNotBeInFxThread("cleanings should not be in fx thread")
       observableCleanings.clear()
       observableCleanings ++= store.cleanings(poolId)
     }.recover { case error: Throwable => onError(error, s"Loading cleanings data failed: ${error.getMessage}") }
 
   def measurements(poolId: Long): Unit =
     Future {
-      shouldNotBeInFxThread("measurements should not be in fx thread.")
+      shouldNotBeInFxThread("measurements should not be in fx thread")
       observableMeasurements.clear()
       observableMeasurements ++= store.measurements(poolId) 
     }.recover { case error: Throwable => onError(error, s"Loading measurements data failed: ${error.getMessage}") }
 
   def chemicals(poolId: Long): Unit =
     Future {
-      shouldNotBeInFxThread("chemicals should not be in fx thread.")
+      shouldNotBeInFxThread("chemicals should not be in fx thread")
       observableChemicals.clear()
       observableChemicals ++= store.chemicals(poolId) 
     }.recover { case error: Throwable => onError(error, s"Loading chemicals data failed: ${error.getMessage}") }
 
   def add(pool: Pool): Future[Pool] =
     Future {
-      shouldNotBeInFxThread("add pool should not be in fx thread.")
+      shouldNotBeInFxThread("add pool should not be in fx thread")
       val newPool = store.add(pool)
       observablePools += newPool
       observablePools.sort()
@@ -124,7 +124,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, pool: Pool): Future[Unit] =
     Future {
-      shouldNotBeInFxThread("update pool should not be in fx thread.")
+      shouldNotBeInFxThread("update pool should not be in fx thread")
       store.update(pool)
       observablePools.update(selectedIndex, pool)
       observablePools.sort()
@@ -133,7 +133,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def add(cleaning: Cleaning): Future[Cleaning] =
     Future {
-      shouldNotBeInFxThread("add cleaning should not be in fx thread.")
+      shouldNotBeInFxThread("add cleaning should not be in fx thread")
       val newCleaning = store.add(cleaning)
       observableCleanings += newCleaning
       observableCleanings.sort()
@@ -143,7 +143,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, cleaning: Cleaning): Future[Unit] =
     Future {
-      shouldNotBeInFxThread("update cleaning should not be in fx thread.")
+      shouldNotBeInFxThread("update cleaning should not be in fx thread")
       store.update(cleaning)
       observableCleanings.update(selectedIndex, cleaning)
       observableCleanings.sort()
@@ -152,7 +152,7 @@ final class Model(store: Store) extends LazyLogging:
   
   def add(measurement: Measurement): Future[Measurement] =
     Future {
-      shouldNotBeInFxThread("add measurement should not be in fx thread.")
+      shouldNotBeInFxThread("add measurement should not be in fx thread")
       val newMeasurement = store.add(measurement)
       observableMeasurements += newMeasurement
       observableMeasurements.sort()
@@ -162,7 +162,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, measurement: Measurement): Future[Unit] =
     Future {
-      shouldNotBeInFxThread("update measurement should not be in fx thread.")
+      shouldNotBeInFxThread("update measurement should not be in fx thread")
       store.update(measurement)
       observableMeasurements.update(selectedIndex, measurement)
       observableMeasurements.sort()
@@ -171,7 +171,7 @@ final class Model(store: Store) extends LazyLogging:
   
   def add(chemical: Chemical): Future[Chemical] =
     Future {
-      shouldNotBeInFxThread("add chemical should not be in fx thread.")
+      shouldNotBeInFxThread("add chemical should not be in fx thread")
       val newChemical = store.add(chemical)
       observableChemicals += newChemical
       observableChemicals.sort()
@@ -181,7 +181,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, chemical: Chemical): Future[Unit] =
     Future {
-      shouldNotBeInFxThread("update chemical should not be in fx thread.")
+      shouldNotBeInFxThread("update chemical should not be in fx thread")
       store.update(chemical)
       observableChemicals.update(selectedIndex, chemical)
       observableChemicals.sort()
@@ -189,17 +189,17 @@ final class Model(store: Store) extends LazyLogging:
     }
 
   def onError(message: String): Unit =
-    shouldBeInFxThread("onerror message should be in fx thread.")
+    shouldBeInFxThread("onerror message should be in fx thread")
     observableErrors += Error(message)
     logger.error(message)
 
   def onError(error: Throwable, message: String): Unit =
-    shouldBeInFxThread("onerror error, message should be in fx thread.")
+    shouldBeInFxThread("onerror error, message should be in fx thread")
     observableErrors += Error(message)
     logger.error(message, error)
 
   private def dashboard(): Unit =
-    shouldBeInFxThread("dashboard should be in fx thread.")
+    shouldBeInFxThread("dashboard should be in fx thread")
     val numberFormat = NumberFormat.getNumberInstance()
     numberFormat.setMaximumFractionDigits(1)
     observableMeasurements.headOption.foreach { measurement =>
@@ -208,7 +208,7 @@ final class Model(store: Store) extends LazyLogging:
     }
 
   private def onCurrent(measurement: Measurement, numberFormat: NumberFormat): Unit =
-    shouldBeInFxThread("oncurrent should be in fx thread.")
+    shouldBeInFxThread("oncurrent should be in fx thread")
     currentTotalChlorine.value = measurement.totalChlorine
     currentFreeChlorine.value = measurement.freeChlorine
     currentCombinedChlorine.value = numberFormat.format( measurement.combinedChlorine ).toDouble
@@ -221,7 +221,7 @@ final class Model(store: Store) extends LazyLogging:
     currentTemperature.value = measurement.temperature
 
   private def onAverage(numberFormat: NumberFormat): Unit =
-    shouldBeInFxThread("onaverage should be in fx thread.")
+    shouldBeInFxThread("onaverage should be in fx thread")
     val count = observableMeasurements.length
     averageTotalChlorine.value = observableMeasurements.map(_.totalChlorine).sum / count
     averageFreeChlorine.value = observableMeasurements.map(_.freeChlorine).sum / count
