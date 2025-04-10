@@ -139,11 +139,10 @@ Solutions
 
 Resources
 ---------
-* [JavaFX](https://openjfx.io/index.html)
 * [ScalaFX](http://www.scalafx.org/)
+* [JavaFX](https://jenkov.com/tutorials/javafx/index.html)
 * [ScalikeJdbc](http://scalikejdbc.org/)
 * [jDeploy](https://www.jdeploy.com/)
-* [JavaFX Tutorial](https://jenkov.com/tutorials/javafx/index.html)
 
 License
 -------
