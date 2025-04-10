@@ -69,12 +69,9 @@ final class Context(config: Config):
   val dashboardPhRange = config.getString("dashboard.phRange")
   val dashboardPhGood = config.getString("dashboard.phGood")
   val dashboardPhIdeal = config.getString("dashboard.phIdeal")
-  val dashboardCalciumHardnessRange =
-    config.getString("dashboard.calciumHardnessRange")
-  val dashboardCalciumHardnessGood =
-    config.getString("dashboard.calciumHardnessGood")
-  val dashboardCalciumHardnessIdeal =
-    config.getString("dashboard.calciumHardnessIdeal")
+  val dashboardCalciumHardnessRange = config.getString("dashboard.calciumHardnessRange")
+  val dashboardCalciumHardnessGood = config.getString("dashboard.calciumHardnessGood")
+  val dashboardCalciumHardnessIdeal = config.getString("dashboard.calciumHardnessIdeal")
   val dashboardTotalAlkalinityRange =
     config.getString("dashboard.totalAlkalinityRange")
   val dashboardTotalAlkalinityGood =
