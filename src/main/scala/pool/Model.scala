@@ -24,7 +24,7 @@ final class Model(store: Store) extends LazyLogging:
   val selectedChemicalId = ObjectProperty[Long](0)
 
   selectedPoolId.onChange { (_, oldPoolId, newPoolId) =>
-    shouldBeInFxThread("selected pool id onchange should be in fx thread")
+    shouldBeInFxThread("selected pool id onchange should be on fx thread")
     logger.info(s"selected oool id onchange event: $oldPoolId -> $newPoolId")
     cleanings(newPoolId)
     measurements(newPoolId)
@@ -189,17 +189,17 @@ final class Model(store: Store) extends LazyLogging:
     }
 
   def onError(message: String): Unit =
-    shouldBeInFxThread("onerror message should be in fx thread")
+    shouldBeInFxThread("onerror message should be on fx thread")
     observableErrors += Error(message)
     logger.error(message)
 
   def onError(error: Throwable, message: String): Unit =
-    shouldBeInFxThread("onerror error, message should be in fx thread")
+    shouldBeInFxThread("onerror error, message should be on fx thread")
     observableErrors += Error(message)
     logger.error(message, error)
 
   private def dashboard(): Unit =
-    shouldBeInFxThread("dashboard should be in fx thread")
+    shouldBeInFxThread("dashboard should be on fx thread")
     val numberFormat = NumberFormat.getNumberInstance()
     numberFormat.setMaximumFractionDigits(1)
     observableMeasurements.headOption.foreach { measurement =>
@@ -208,7 +208,7 @@ final class Model(store: Store) extends LazyLogging:
     }
 
   private def onCurrent(measurement: Measurement, numberFormat: NumberFormat): Unit =
-    shouldBeInFxThread("oncurrent should be in fx thread")
+    shouldBeInFxThread("oncurrent should be on fx thread")
     currentTotalChlorine.value = measurement.totalChlorine
     currentFreeChlorine.value = measurement.freeChlorine
     currentCombinedChlorine.value = numberFormat.format( measurement.combinedChlorine ).toDouble
@@ -221,7 +221,7 @@ final class Model(store: Store) extends LazyLogging:
     currentTemperature.value = measurement.temperature
 
   private def onAverage(numberFormat: NumberFormat): Unit =
-    shouldBeInFxThread("onaverage should be in fx thread")
+    shouldBeInFxThread("onaverage should be on fx thread")
     val count = observableMeasurements.length
     averageTotalChlorine.value = observableMeasurements.map(_.totalChlorine).sum / count
     averageFreeChlorine.value = observableMeasurements.map(_.freeChlorine).sum / count
