@@ -53,13 +53,12 @@ final class PoolsPane(context: Context, model: Model) extends VBox:
     children = List(addButton, editButton, errorsButton)
 
   val tab = new Tab:
-  	text = context.labelPools
-  	closable = false
-  	content = new VBox {
+    text = context.labelPools
+    closable = false
+    content = new VBox:
       spacing = 6
       padding = Insets(6)
       children = List(tableView, buttonBar)
-    } // unable to remove braces without errors!
 
   val tabPane = new TabPane:
     tabs = List(tab)
