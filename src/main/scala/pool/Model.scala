@@ -15,6 +15,9 @@ import Entity.given
 import Measurement.*
 
 final class Model(store: Store) extends LazyLogging:
+  val shouldBeInFxThread = (message: String) => require(Platform.isFxApplicationThread, message)
+  val shouldNotBeInFxThread = (message: String) => require(!Platform.isFxApplicationThread, message)
+
   val selectedPoolId = ObjectProperty[Long](0)
   val selectedCleaningId = ObjectProperty[Long](0)
   val selectedMeasurementId = ObjectProperty[Long](0)
@@ -79,9 +82,6 @@ final class Model(store: Store) extends LazyLogging:
   val currentTemperature = ObjectProperty[Int](0)
   val averageTemperature = ObjectProperty[Int](0)
   def temperatureInRange(value: Int): Boolean = temperatureRange.contains(value)
-
-  val shouldBeInFxThread = (message: String) => require(Platform.isFxApplicationThread, message)
-  val shouldNotBeInFxThread = (message: String) => require(!Platform.isFxApplicationThread, message)
 
   pools()
 
