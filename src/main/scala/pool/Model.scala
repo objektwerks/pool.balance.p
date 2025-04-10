@@ -21,7 +21,7 @@ final class Model(store: Store) extends LazyLogging:
   val selectedChemicalId = ObjectProperty[Long](0)
 
   selectedPoolId.onChange { (_, oldPoolId, newPoolId) =>
-    shouldBeInFxThread("selected pool id onchange should be in fx thread.")
+    shouldBeInFxThread("selected pool id onchange should be in fx thread")
     logger.info(s"selected oool id onchange event: $oldPoolId -> $newPoolId")
     cleanings(newPoolId)
     measurements(newPoolId)
@@ -35,7 +35,7 @@ final class Model(store: Store) extends LazyLogging:
   val observableChemicals = ObservableBuffer[Chemical]()
 
   observableMeasurements.onChange { (_, _) =>
-    shouldNotBeInFxThread("observable measurements onchange should not be in fx thread.")
+    shouldNotBeInFxThread("observable measurements onchange should not be in fx thread")
     logger.info(s"observable measurements onchange event.")
     Platform.runLater( dashboard() )
   }
