@@ -57,12 +57,9 @@ final class Context(config: Config):
   val converterPounds = config.getString("converter.pounds")
   val converterKilograms = config.getString("converter.kilograms")
 
-  val dashboardTotalChlorineRange =
-    config.getString("dashboard.totalChlorineRange")
-  val dashboardTotalChlorineGood =
-    config.getString("dashboard.totalChlorineGood")
-  val dashboardTotalChlorineIdeal =
-    config.getString("dashboard.totalChlorineIdeal")
+  val dashboardTotalChlorineRange = config.getString("dashboard.totalChlorineRange")
+  val dashboardTotalChlorineGood = config.getString("dashboard.totalChlorineGood")
+  val dashboardTotalChlorineIdeal = config.getString("dashboard.totalChlorineIdeal")
   val dashboardFreeChlorineRange =
     config.getString("dashboard.freeChlorineRange")
   val dashboardFreeChlorineGood = config.getString("dashboard.freeChlorineGood")
