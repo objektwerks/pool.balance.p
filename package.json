@@ -1,6 +1,6 @@
 {
   "bin": {
-      "pool.balance.p": "jdeploy-bundle/jdeploy.js"
+      "poolbalance": "jdeploy-bundle/jdeploy.js"
   },
   "author": "Objektwerks",
   "description": "Pool cleaning, measurement and chemical balancing app.",
