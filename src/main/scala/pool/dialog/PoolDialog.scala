@@ -36,7 +36,7 @@ final class PoolDialog(context: Context, pool: Pool) extends Dialog[Pool]:
   val saveButtonType = new ButtonType(context.buttonSave, ButtonData.OKDone)
   dialogPane().buttonTypes = List(saveButtonType, ButtonType.Cancel)
 
-  resultConverter = dialogButton => {
+  resultConverter = dialogButton =>
     if dialogButton == saveButtonType then
       pool.copy(
         name = nameTextField.text.value,
@@ -44,4 +44,3 @@ final class PoolDialog(context: Context, pool: Pool) extends Dialog[Pool]:
         unit = UnitOfMeasure.valueOf(unitComboBox.value.value)
       )
     else null
-  }
