@@ -20,9 +20,9 @@ Assembly
 
 Execute
 -------
-1. ```java -jar target/scala-3.6.4/gciphers-0.4.jar```
+1. ```java -jar target/scala-3.6.4/gciphers-0.5.jar```
 >or:
-1. ```java -jar .assembly/gciphers-0.4.jar```
+1. ```java -jar .assembly/gciphers-0.5.jar```
 
 Deploy
 ------
