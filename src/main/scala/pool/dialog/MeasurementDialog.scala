@@ -45,7 +45,7 @@ final class MeasurementDialog(context: Context, measurement: Measurement) extend
   val saveButtonType = new ButtonType(context.buttonSave, ButtonData.OKDone)
   dialogPane().buttonTypes = List(saveButtonType, ButtonType.Cancel)
 
-  resultConverter = dialogButton => {
+  resultConverter = dialogButton =>
     if dialogButton == saveButtonType then
       measurement.copy(
         totalChlorine = totalChlorineSlider.valueAsInt,
@@ -60,4 +60,3 @@ final class MeasurementDialog(context: Context, measurement: Measurement) extend
         measured = applyLocalDate(measuredDatePicker.value.value, measurement.measured)
       )
     else null
-  }
