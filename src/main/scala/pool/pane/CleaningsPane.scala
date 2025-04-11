@@ -1,7 +1,5 @@
 package pool.pane
 
-import scala.concurrent.ExecutionContext.Implicits.global
-
 import scalafx.Includes.*
 import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, TableColumn, TableView}
@@ -98,11 +96,7 @@ final class CleaningsPane(context: Context, model: Model) extends VBox:
 
   def add(): Unit =
     CleaningDialog(context, Cleaning(poolId = model.selectedPoolId.value)).showAndWait() match
-      case Some(cleaning: Cleaning) =>
-        model
-          .add(cleaning)
-          .map(cleaning => tableView.selectionModel().select(cleaning))
-          .recover { case error: Throwable => model.onError(error, "Cleaning add failed.") }
+      case Some(cleaning: Cleaning) => tableView.selectionModel().select( model.add(cleaning) )
       case _ =>
 
   def update(): Unit =
@@ -110,10 +104,8 @@ final class CleaningsPane(context: Context, model: Model) extends VBox:
     val cleaning = tableView.selectionModel().getSelectedItem.cleaning
     CleaningDialog(context, cleaning).showAndWait() match
       case Some(cleaning: Cleaning) =>
-        model
-          .update(selectedIndex, cleaning)
-          .map(_ => tableView.selectionModel().select(selectedIndex))
-          .recover { case error: Throwable => model.onError(error, "Cleaning update failed.") }
+        model.update(selectedIndex, cleaning)
+        tableView.selectionModel().select(selectedIndex)
       case _ =>
 
   def chart(): Unit = CleaningsChartDialog(context, model).showAndWait()
