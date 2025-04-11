@@ -17,7 +17,8 @@ import Entity.given
 import Measurement.*
 
 final class Model(store: Store) extends LazyLogging:
-  def assertNotInFxThread: Unit = assert( !Platform.isFxApplicationThread, "Store operation called on Fx thread!" )
+  def `assertNotInFxThread()`: Unit =
+    assert( !Platform.isFxApplicationThread, "Model / Store operation should not be called on Fx thread!" )
 
   val selectedPoolId = ObjectProperty[Long](0)
   val selectedCleaningId = ObjectProperty[Long](0)
@@ -25,7 +26,7 @@ final class Model(store: Store) extends LazyLogging:
   val selectedChemicalId = ObjectProperty[Long](0)
 
   selectedPoolId.onChange { (_, oldPoolId, newPoolId) =>
-    assertNotInFxThread
+    `assertNotInFxThread()`
     logger.info(s"selected oool id onchange event: $oldPoolId -> $newPoolId")
     cleanings(newPoolId)
     measurements(newPoolId)
@@ -39,7 +40,7 @@ final class Model(store: Store) extends LazyLogging:
   val observableChemicals = ObservableBuffer[Chemical]()
 
   observableMeasurements.onChange { (_, _) =>
-    assertNotInFxThread
+    `assertNotInFxThread()`
     logger.info(s"observable measurements onchange event.")
     Platform.runLater( dashboard() )
   }
@@ -88,30 +89,30 @@ final class Model(store: Store) extends LazyLogging:
 
   def pools(): Unit =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       observablePools ++= store.pools()
 
   def cleanings(poolId: Long): Unit =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       observableCleanings.clear()
       observableCleanings ++= store.cleanings(poolId)
 
   def measurements(poolId: Long): Unit =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       observableMeasurements.clear()
       observableMeasurements ++= store.measurements(poolId) 
 
   def chemicals(poolId: Long): Unit =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       observableChemicals.clear()
       observableChemicals ++= store.chemicals(poolId) 
 
   def add(pool: Pool): Pool =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       val newPool = store.add(pool)
       observablePools += newPool
       observablePools.sort()
@@ -120,7 +121,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, pool: Pool): Unit =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       store.update(pool)
       observablePools.update(selectedIndex, pool)
       observablePools.sort()
@@ -128,7 +129,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def add(cleaning: Cleaning): Cleaning =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       val newCleaning = store.add(cleaning)
       observableCleanings += newCleaning
       observableCleanings.sort()
@@ -137,7 +138,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, cleaning: Cleaning): Unit =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       store.update(cleaning)
       observableCleanings.update(selectedIndex, cleaning)
       observableCleanings.sort()
@@ -145,7 +146,7 @@ final class Model(store: Store) extends LazyLogging:
   
   def add(measurement: Measurement): Measurement =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       val newMeasurement = store.add(measurement)
       observableMeasurements += newMeasurement
       observableMeasurements.sort()
@@ -154,7 +155,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, measurement: Measurement): Unit =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       store.update(measurement)
       observableMeasurements.update(selectedIndex, measurement)
       observableMeasurements.sort()
@@ -162,7 +163,7 @@ final class Model(store: Store) extends LazyLogging:
   
   def add(chemical: Chemical): Chemical =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       val newChemical = store.add(chemical)
       observableChemicals += newChemical
       observableChemicals.sort()
@@ -171,7 +172,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, chemical: Chemical): Unit =
     supervised:
-      assertNotInFxThread
+      `assertNotInFxThread()`
       store.update(chemical)
       observableChemicals.update(selectedIndex, chemical)
       observableChemicals.sort()
