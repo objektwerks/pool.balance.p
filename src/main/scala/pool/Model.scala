@@ -4,6 +4,8 @@ import com.typesafe.scalalogging.LazyLogging
 
 import java.text.NumberFormat
 
+import ox.*
+
 import scala.concurrent.Future
 import scala.concurrent.ExecutionContext.Implicits.global
 
@@ -86,10 +88,9 @@ final class Model(store: Store) extends LazyLogging:
   pools()
 
   def pools(): Unit =
-    Future {
+    supervised:
       shouldNotBeInFxThread("pools should not be on fx thread")
       observablePools ++= store.pools()
-    }.recover { case error: Throwable => onError(error, s"Loading pools data failed: ${error.getMessage}") }
 
   def cleanings(poolId: Long): Unit =
     Future {
