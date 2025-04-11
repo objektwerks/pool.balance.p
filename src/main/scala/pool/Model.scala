@@ -170,14 +170,13 @@ final class Model(store: Store) extends LazyLogging:
       selectedChemicalId.value = newChemical.id      
       newChemical
 
-  def update(selectedIndex: Int, chemical: Chemical): Future[Unit] =
-    Future {
+  def update(selectedIndex: Int, chemical: Chemical): Unit =
+    supervised:
       shouldNotBeInFxThread("update chemical should not be on fx thread")
       store.update(chemical)
       observableChemicals.update(selectedIndex, chemical)
       observableChemicals.sort()
       selectedChemicalId.value = chemical.id
-    }
 
   def onError(message: String): Unit =
     shouldBeInFxThread("onerror message should be on fx thread")
