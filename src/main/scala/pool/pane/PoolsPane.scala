@@ -1,7 +1,5 @@
 package pool.pane
 
-import scala.concurrent.ExecutionContext.Implicits.global
-
 import scalafx.Includes.*
 import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, Tab, TabPane, TableColumn, TableView}
@@ -85,11 +83,7 @@ final class PoolsPane(context: Context, model: Model) extends VBox:
 
   def add(): Unit =
     PoolDialog(context, Pool()).showAndWait() match
-      case Some(pool: Pool) =>
-        model
-          .add(pool)
-          .map(pool => tableView.selectionModel().select(pool))
-          .recover { case error: Throwable => model.onError(error, "Pool add failed.") }
+      case Some(pool: Pool) => tableView.selectionModel().select( model.add(pool) )
       case _ =>
 
   def update(): Unit =
@@ -97,10 +91,8 @@ final class PoolsPane(context: Context, model: Model) extends VBox:
     val pool = tableView.selectionModel().getSelectedItem.pool
     PoolDialog(context, pool).showAndWait() match
       case Some(pool: Pool) =>
-        model
-          .update(selectedIndex, pool)
-          .map(_ => tableView.selectionModel().select(selectedIndex))
-          .recover { case error: Throwable => model.onError(error, "Pool update failed.") }
+        model.update(selectedIndex, pool)
+        tableView.selectionModel().select(selectedIndex)
       case _ =>
 
   def errors(): Unit = ErrorsDialog(context, model).showAndWait() match
