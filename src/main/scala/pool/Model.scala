@@ -128,7 +128,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def add(cleaning: Cleaning): Cleaning =
     supervised:
-      shouldNotBeInFxThread("add cleaning should not be on fx thread")
+      assertNotInFxThread
       val newCleaning = store.add(cleaning)
       observableCleanings += newCleaning
       observableCleanings.sort()
@@ -137,7 +137,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, cleaning: Cleaning): Unit =
     supervised:
-      shouldNotBeInFxThread("update cleaning should not be on fx thread")
+      assertNotInFxThread
       store.update(cleaning)
       observableCleanings.update(selectedIndex, cleaning)
       observableCleanings.sort()
