@@ -162,7 +162,7 @@ final class Model(store: Store) extends LazyLogging:
   
   def add(chemical: Chemical): Chemical =
     supervised:
-      shouldNotBeInFxThread("add chemical should not be on fx thread")
+      assertNotInFxThread
       val newChemical = store.add(chemical)
       observableChemicals += newChemical
       observableChemicals.sort()
@@ -171,7 +171,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, chemical: Chemical): Unit =
     supervised:
-      shouldNotBeInFxThread("update chemical should not be on fx thread")
+      assertNotInFxThread
       store.update(chemical)
       observableChemicals.update(selectedIndex, chemical)
       observableChemicals.sort()
