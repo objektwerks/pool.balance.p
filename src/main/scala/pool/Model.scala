@@ -145,7 +145,7 @@ final class Model(store: Store) extends LazyLogging:
   
   def add(measurement: Measurement): Measurement =
     supervised:
-      shouldNotBeInFxThread("add measurement should not be on fx thread")
+      assertNotInFxThread
       val newMeasurement = store.add(measurement)
       observableMeasurements += newMeasurement
       observableMeasurements.sort()
@@ -154,7 +154,7 @@ final class Model(store: Store) extends LazyLogging:
 
   def update(selectedIndex: Int, measurement: Measurement): Unit =
     supervised:
-      shouldNotBeInFxThread("update measurement should not be on fx thread")
+      assertNotInFxThread
       store.update(measurement)
       observableMeasurements.update(selectedIndex, measurement)
       observableMeasurements.sort()
