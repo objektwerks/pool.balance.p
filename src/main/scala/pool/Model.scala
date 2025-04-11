@@ -88,24 +88,24 @@ final class Model(store: Store) extends LazyLogging:
 
   def pools(): Unit =
     supervised:
-      shouldNotBeInFxThread("pools should not be on fx thread")
+      assertNotInFxThread
       observablePools ++= store.pools()
 
   def cleanings(poolId: Long): Unit =
     supervised:
-      shouldNotBeInFxThread("cleanings should not be on fx thread")
+      assertNotInFxThread
       observableCleanings.clear()
       observableCleanings ++= store.cleanings(poolId)
 
   def measurements(poolId: Long): Unit =
     supervised:
-      shouldNotBeInFxThread("measurements should not be on fx thread")
+      assertNotInFxThread
       observableMeasurements.clear()
       observableMeasurements ++= store.measurements(poolId) 
 
   def chemicals(poolId: Long): Unit =
     supervised:
-      shouldNotBeInFxThread("chemicals should not be on fx thread")
+      assertNotInFxThread
       observableChemicals.clear()
       observableChemicals ++= store.chemicals(poolId) 
 
