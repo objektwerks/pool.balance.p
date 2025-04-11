@@ -153,14 +153,13 @@ final class Model(store: Store) extends LazyLogging:
       selectedMeasurementId.value = newMeasurement.id
       newMeasurement
 
-  def update(selectedIndex: Int, measurement: Measurement): Future[Unit] =
-    Future {
+  def update(selectedIndex: Int, measurement: Measurement): Unit =
+    supervised:
       shouldNotBeInFxThread("update measurement should not be on fx thread")
       store.update(measurement)
       observableMeasurements.update(selectedIndex, measurement)
       observableMeasurements.sort()
       selectedMeasurementId.value = measurement.id
-    }
   
   def add(chemical: Chemical): Future[Chemical] =
     Future {
