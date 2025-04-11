@@ -99,11 +99,10 @@ final class Model(store: Store) extends LazyLogging:
       observableCleanings ++= store.cleanings(poolId)
 
   def measurements(poolId: Long): Unit =
-    Future {
+    supervised:
       shouldNotBeInFxThread("measurements should not be on fx thread")
       observableMeasurements.clear()
       observableMeasurements ++= store.measurements(poolId) 
-    }.recover { case error: Throwable => onError(error, s"Loading measurements data failed: ${error.getMessage}") }
 
   def chemicals(poolId: Long): Unit =
     Future {
