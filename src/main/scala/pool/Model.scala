@@ -17,8 +17,7 @@ import Entity.given
 import Measurement.*
 
 final class Model(store: Store) extends LazyLogging:
-  val shouldBeInFxThread = (message: String) => require(Platform.isFxApplicationThread, message)
-  val shouldNotBeInFxThread = (message: String) => require(!Platform.isFxApplicationThread, message)
+  def assertNotInFxThread: Unit = assert( !Platform.isFxApplicationThread, "Store operation called on Fx thread!" )
 
   val selectedPoolId = ObjectProperty[Long](0)
   val selectedCleaningId = ObjectProperty[Long](0)
@@ -26,7 +25,7 @@ final class Model(store: Store) extends LazyLogging:
   val selectedChemicalId = ObjectProperty[Long](0)
 
   selectedPoolId.onChange { (_, oldPoolId, newPoolId) =>
-    shouldBeInFxThread("selected pool id onchange should be on fx thread")
+    assertNotInFxThread
     logger.info(s"selected oool id onchange event: $oldPoolId -> $newPoolId")
     cleanings(newPoolId)
     measurements(newPoolId)
@@ -40,7 +39,7 @@ final class Model(store: Store) extends LazyLogging:
   val observableChemicals = ObservableBuffer[Chemical]()
 
   observableMeasurements.onChange { (_, _) =>
-    shouldNotBeInFxThread("observable measurements onchange should not be on fx thread")
+    assertNotInFxThread
     logger.info(s"observable measurements onchange event.")
     Platform.runLater( dashboard() )
   }
