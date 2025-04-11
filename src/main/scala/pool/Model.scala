@@ -144,15 +144,14 @@ final class Model(store: Store) extends LazyLogging:
       observableCleanings.sort()
       selectedCleaningId.value = cleaning.id
   
-  def add(measurement: Measurement): Future[Measurement] =
-    Future {
+  def add(measurement: Measurement): Measurement =
+    supervised:
       shouldNotBeInFxThread("add measurement should not be on fx thread")
       val newMeasurement = store.add(measurement)
       observableMeasurements += newMeasurement
       observableMeasurements.sort()
       selectedMeasurementId.value = newMeasurement.id
       newMeasurement
-    }
 
   def update(selectedIndex: Int, measurement: Measurement): Future[Unit] =
     Future {
