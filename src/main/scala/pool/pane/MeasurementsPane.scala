@@ -1,7 +1,5 @@
 package pool.pane
 
-import scala.concurrent.ExecutionContext.Implicits.global
-
 import scalafx.Includes.*
 import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, TableColumn, TableView}
@@ -110,11 +108,7 @@ final class MeasurementsPane(context: Context, model: Model) extends VBox:
 
   def add(): Unit =
     MeasurementDialog(context, Measurement(poolId = model.selectedPoolId.value)).showAndWait() match
-      case Some(measurement: Measurement) =>
-        model
-          .add(measurement)
-          .map(measurement => tableView.selectionModel().select(measurement))
-          .recover { case error: Throwable => model.onError(error, "Measurement add failed.") }
+      case Some(measurement: Measurement) => tableView.selectionModel().select( model.add(measurement) )
       case _ =>
 
   def update(): Unit =
@@ -122,10 +116,8 @@ final class MeasurementsPane(context: Context, model: Model) extends VBox:
     val measurement = tableView.selectionModel().getSelectedItem.measurement
     MeasurementDialog(context, measurement).showAndWait() match
       case Some(measurement: Measurement) =>
-        model
-          .update(selectedIndex, measurement)
-          .map(_ => tableView.selectionModel().select(selectedIndex))
-          .recover { case error: Throwable => model.onError(error, "Measurement update failed.") }
+        model.update(selectedIndex, measurement)
+        tableView.selectionModel().select(selectedIndex)
       case _ =>
 
   def chart(): Unit = MeasurementsChartDialog(context, model).showAndWait()
