@@ -1,6 +1,6 @@
 name := "pool.balance.p"
 organization := "objektwerks"
-version := "1.0.0"
+version := "2.0.0"
 scalaVersion := "3.6.4" // 3.7.0-RC1/2 still breaks ScalaFx!
 mainClass := Some("pool.App")
 libraryDependencies ++= {
