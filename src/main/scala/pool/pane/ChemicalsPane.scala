@@ -1,7 +1,5 @@
 package pool.pane
 
-import scala.concurrent.ExecutionContext.Implicits.global
-
 import scalafx.Includes.*
 import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, TableColumn, TableView}
@@ -79,11 +77,7 @@ final class ChemicalsPane(context: Context, model: Model) extends VBox:
 
   def add(): Unit =
     ChemicalDialog(context, Chemical(poolId = model.selectedPoolId.value)).showAndWait() match
-      case Some(chemical: Chemical) =>
-        model
-          .add(chemical)
-          .map(chemical => tableView.selectionModel().select(chemical))
-          .recover { case error: Throwable => model.onError(error, "Chemical add failed.") }
+      case Some(chemical: Chemical) => tableView.selectionModel().select( model.add(chemical) )
       case _ =>
 
   def update(): Unit =
@@ -91,10 +85,8 @@ final class ChemicalsPane(context: Context, model: Model) extends VBox:
     val chemical = tableView.selectionModel().getSelectedItem.chemical
     ChemicalDialog(context, chemical).showAndWait() match
       case Some(chemical: Chemical) =>
-        model
-          .update(selectedIndex, chemical)
-          .map(_ => tableView.selectionModel().select(selectedIndex))
-          .recover { case error: Throwable => model.onError(error, "Chemical update failed.") }
+        model.update(selectedIndex, chemical)
+        tableView.selectionModel().select(selectedIndex)
       case _ =>
 
   def chart(): Unit = ChemicalsChartDialog(context, model).showAndWait()
