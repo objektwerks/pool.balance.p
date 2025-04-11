@@ -38,9 +38,10 @@ final class Model(store: Store) extends LazyLogging:
   val observableChemicals = ObservableBuffer[Chemical]()
 
   observableMeasurements.onChange { (_, _) =>
-    assertNotInFxThread()
-    logger.info(s"observable measurements onchange event.")
-    Platform.runLater( dashboard() )
+    supervised:
+      assertNotInFxThread()
+      logger.info(s"observable measurements onchange event.")
+      Platform.runLater( dashboard() )
   }
 
   val currentTotalChlorine = ObjectProperty[Int](0)
