@@ -23,11 +23,12 @@ final class Model(store: Store) extends LazyLogging:
   val selectedChemicalId = ObjectProperty[Long](0)
 
   selectedPoolId.onChange { (_, oldPoolId, newPoolId) =>
-    assertNotInFxThread()
-    logger.info(s"selected oool id onchange event: $oldPoolId -> $newPoolId")
-    cleanings(newPoolId)
-    measurements(newPoolId)
-    chemicals(newPoolId)
+    supervised:
+      assertNotInFxThread()
+      logger.info(s"selected oool id onchange event: $oldPoolId -> $newPoolId")
+      cleanings(newPoolId)
+      measurements(newPoolId)
+      chemicals(newPoolId)
   }
 
   val observableErrors = ObservableBuffer[Error]()
