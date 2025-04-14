@@ -5,6 +5,8 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, TableColumn, TableView}
 import scalafx.scene.layout.{HBox, Priority, VBox}
 
+import scala.util.control.NonFatal
+
 import pool.{Chemical, Context, Model}
 import pool.dialog.{ChemicalDialog, ChemicalsChartDialog}
 
@@ -77,7 +79,10 @@ final class ChemicalsPane(context: Context, model: Model) extends VBox:
 
   def add(): Unit =
     ChemicalDialog(context, Chemical(poolId = model.selectedPoolId.value)).showAndWait() match
-      case Some(chemical: Chemical) => tableView.selectionModel().select( model.add(chemical) )
+      case Some(chemical: Chemical) =>
+        try
+          tableView.selectionModel().select( model.add(chemical) )
+        catch case NonFatal(error) => model.onError(error, s"Add chemical failed: ${error.getMessage}")
       case _ =>
 
   def update(): Unit =
