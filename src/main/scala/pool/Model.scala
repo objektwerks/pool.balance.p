@@ -31,11 +31,11 @@ final class Model(store: Store) extends LazyLogging:
       chemicals(newPoolId)
   }
 
-  val observableErrors = ObservableBuffer[Error]()
   val observablePools = ObservableBuffer[Pool]()
   val observableCleanings = ObservableBuffer[Cleaning]()
   val observableMeasurements = ObservableBuffer[Measurement]()
   val observableChemicals = ObservableBuffer[Chemical]()
+  val observableErrors = ObservableBuffer[Error]()
 
   observableMeasurements.onChange { (_, _) =>
     supervised:
