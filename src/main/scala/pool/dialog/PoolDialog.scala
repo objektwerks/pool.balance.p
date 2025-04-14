@@ -3,19 +3,18 @@ package pool.dialog
 import scalafx.Includes.*
 import scalafx.collections.ObservableBuffer
 import scalafx.scene.layout.Region
-import scalafx.scene.control.{ButtonType, ComboBox, Dialog, TextField}
+import scalafx.scene.control.{ButtonType, ComboBox, Dialog}
 import scalafx.scene.control.ButtonBar.ButtonData
 
-import pool.{App, Context, Pool}
-import pool.UnitOfMeasure
-import pool.control.IntTextField
+import pool.{App, Context, Pool, UnitOfMeasure}
+import pool.control.{IntTextField, NonEmptyTextField}
 
 final class PoolDialog(context: Context, pool: Pool) extends Dialog[Pool]:
   initOwner(App.stage)
   title = context.windowTitle
   headerText = context.dialogPool
 
-  val nameTextField = new TextField:
+  val nameTextField = new NonEmptyTextField:
     text = pool.name
 
   val volumeTextField = new IntTextField:
