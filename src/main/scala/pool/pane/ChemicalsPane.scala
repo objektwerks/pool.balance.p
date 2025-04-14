@@ -90,8 +90,10 @@ final class ChemicalsPane(context: Context, model: Model) extends VBox:
     val chemical = tableView.selectionModel().getSelectedItem.chemical
     ChemicalDialog(context, chemical).showAndWait() match
       case Some(chemical: Chemical) =>
-        model.update(selectedIndex, chemical)
-        tableView.selectionModel().select(selectedIndex)
+        try
+          model.update(selectedIndex, chemical)
+          tableView.selectionModel().select(selectedIndex)
+        catch case NonFatal(error) => model.onError(error, s"Update chemical failed: ${error.getMessage}")
       case _ =>
 
   def chart(): Unit = ChemicalsChartDialog(context, model).showAndWait()
