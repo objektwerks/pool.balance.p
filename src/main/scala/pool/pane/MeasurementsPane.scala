@@ -5,6 +5,8 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, TableColumn, TableView}
 import scalafx.scene.layout.{HBox, Priority, VBox}
 
+import scala.util.control.NonFatal
+
 import pool.{Measurement, Context, Model}
 import pool.dialog.{MeasurementDialog, MeasurementsChartDialog}
 
@@ -100,7 +102,6 @@ final class MeasurementsPane(context: Context, model: Model) extends VBox:
   tableView.selectionModel().selectionModeProperty.value = SelectionMode.Single
 
   tableView.selectionModel().selectedItemProperty().addListener { (_, _, selectedItem) =>
-    // model.update executes a remove and add on items. the remove passes a null selectedItem!
     if selectedItem != null then
       model.selectedMeasurementId.value = selectedItem.id
       editButton.disable = false
@@ -108,7 +109,10 @@ final class MeasurementsPane(context: Context, model: Model) extends VBox:
 
   def add(): Unit =
     MeasurementDialog(context, Measurement(poolId = model.selectedPoolId.value)).showAndWait() match
-      case Some(measurement: Measurement) => tableView.selectionModel().select( model.add(measurement) )
+      case Some(measurement: Measurement) =>
+        try
+          tableView.selectionModel().select( model.add(measurement) )
+        catch case NonFatal(error) => model.onError(error, s"Add measurement failed: ${error.getMessage}")
       case _ =>
 
   def update(): Unit =
