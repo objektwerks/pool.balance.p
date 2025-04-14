@@ -109,8 +109,10 @@ final class CleaningsPane(context: Context, model: Model) extends VBox:
     val cleaning = tableView.selectionModel().getSelectedItem.cleaning
     CleaningDialog(context, cleaning).showAndWait() match
       case Some(cleaning: Cleaning) =>
-        model.update(selectedIndex, cleaning)
-        tableView.selectionModel().select(selectedIndex)
+        try
+          model.update(selectedIndex, cleaning)
+          tableView.selectionModel().select(selectedIndex)
+        catch case NonFatal(error) => model.onError(error, s"Update cleaning failed: ${error.getMessage}")
       case _ =>
 
   def chart(): Unit = CleaningsChartDialog(context, model).showAndWait()
