@@ -88,9 +88,7 @@ final class PoolsPane(context: Context, model: Model) extends VBox:
       case Some(pool: Pool) =>
         try
           tableView.selectionModel().select( model.add(pool) )
-        catch case NonFatal(error) =>
-          model.onError(error, s"Add pool failed: ${error.getMessage}")
-          errorsButton.disable = false
+        catch case NonFatal(error) => model.onError(error, s"Add pool failed: ${error.getMessage}")
       case _ =>
 
   def update(): Unit =
@@ -101,9 +99,7 @@ final class PoolsPane(context: Context, model: Model) extends VBox:
         try
           model.update(selectedIndex, pool)
           tableView.selectionModel().select(selectedIndex)
-        catch case NonFatal(error) =>
-          model.onError(error, s"Update pool failed: ${error.getMessage}")
-          errorsButton.disable = false
+        catch case NonFatal(error) => model.onError(error, s"Update pool failed: ${error.getMessage}")
       case _ =>
 
   def errors(): Unit = ErrorsDialog(context, model).showAndWait() match
