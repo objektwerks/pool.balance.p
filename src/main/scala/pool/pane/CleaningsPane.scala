@@ -5,6 +5,8 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, TableColumn, TableView}
 import scalafx.scene.layout.{HBox, Priority, VBox}
 
+import scala.util.control.NonFatal
+
 import pool.{Cleaning, Context, Model}
 import pool.dialog.{CleaningDialog, CleaningsChartDialog}
 
@@ -96,7 +98,10 @@ final class CleaningsPane(context: Context, model: Model) extends VBox:
 
   def add(): Unit =
     CleaningDialog(context, Cleaning(poolId = model.selectedPoolId.value)).showAndWait() match
-      case Some(cleaning: Cleaning) => tableView.selectionModel().select( model.add(cleaning) )
+      case Some(cleaning: Cleaning) =>
+        try
+          tableView.selectionModel().select( model.add(cleaning) )
+        catch case NonFatal(error) => model.onError(error, s"Add cleaning failed: ${error.getMessage}")
       case _ =>
 
   def update(): Unit =
