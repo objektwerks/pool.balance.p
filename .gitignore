@@ -6,3 +6,4 @@ project/target/
 target/
 jdeploy
 jdeploy-bundle
+package-lock.json
