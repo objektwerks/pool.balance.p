@@ -120,8 +120,10 @@ final class MeasurementsPane(context: Context, model: Model) extends VBox:
     val measurement = tableView.selectionModel().getSelectedItem.measurement
     MeasurementDialog(context, measurement).showAndWait() match
       case Some(measurement: Measurement) =>
-        model.update(selectedIndex, measurement)
-        tableView.selectionModel().select(selectedIndex)
+        try
+          model.update(selectedIndex, measurement)
+          tableView.selectionModel().select(selectedIndex)
+        catch case NonFatal(error) => model.onError(error, s"Update measurement failed: ${error.getMessage}")
       case _ =>
 
   def chart(): Unit = MeasurementsChartDialog(context, model).showAndWait()
