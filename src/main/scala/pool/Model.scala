@@ -177,10 +177,6 @@ final class Model(store: Store) extends LazyLogging:
       observableChemicals.sort()
       selectedChemicalId.value = chemical.id
 
-  def onError(message: String): Unit =
-    observableErrors += Error(message)
-    logger.error(message)
-
   def onError(error: Throwable, message: String): Unit =
     observableErrors += Error(message)
     logger.error(message, error)
