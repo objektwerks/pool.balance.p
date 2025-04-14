@@ -5,6 +5,8 @@ import scalafx.geometry.Insets
 import scalafx.scene.control.{Button, SelectionMode, Tab, TabPane, TableColumn, TableView}
 import scalafx.scene.layout.{HBox, Priority, VBox}
 
+import scala.util.control.NonFatal
+
 import pool.{Context, Model, Pool}
 import pool.dialog.{ErrorsDialog, PoolDialog}
 
@@ -83,7 +85,12 @@ final class PoolsPane(context: Context, model: Model) extends VBox:
 
   def add(): Unit =
     PoolDialog(context, Pool()).showAndWait() match
-      case Some(pool: Pool) => tableView.selectionModel().select( model.add(pool) )
+      case Some(pool: Pool) =>
+        try
+          tableView.selectionModel().select( model.add(pool) )
+        catch case NonFatal(error) =>
+          model.onError(error, s"Add pool failed: ${error.getMessage}")
+          errorsButton.disable = false
       case _ =>
 
   def update(): Unit =
