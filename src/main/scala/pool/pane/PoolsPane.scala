@@ -98,8 +98,12 @@ final class PoolsPane(context: Context, model: Model) extends VBox:
     val pool = tableView.selectionModel().getSelectedItem.pool
     PoolDialog(context, pool).showAndWait() match
       case Some(pool: Pool) =>
-        model.update(selectedIndex, pool)
-        tableView.selectionModel().select(selectedIndex)
+        try
+          model.update(selectedIndex, pool)
+          tableView.selectionModel().select(selectedIndex)
+        catch case NonFatal(error) =>
+          model.onError(error, s"Update pool failed: ${error.getMessage}")
+          errorsButton.disable = false
       case _ =>
 
   def errors(): Unit = ErrorsDialog(context, model).showAndWait() match
