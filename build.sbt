@@ -1,11 +1,11 @@
 name := "pool.balance.p"
 organization := "objektwerks"
 version := "3.0.0"
-scalaVersion := "3.6.4" // Scala 3.7.0-RC3 breaks ScalaFx!
+scalaVersion := "3.6.4" // Scala 3.7.0-RC4 breaks ScalaFx!
 mainClass := Some("pool.App")
 libraryDependencies ++= {
   Seq(
-    "org.scalafx" %% "scalafx" % "23.0.1-R34",
+    "org.scalafx" %% "scalafx" % "24.0.0-R35",
     "com.softwaremill.ox" %% "core" % "0.5.13",
     "org.scalikejdbc" %% "scalikejdbc" % "4.3.2",
     "com.zaxxer" % "HikariCP" % "6.3.0" exclude("org.slf4j", "slf4j-api"),
