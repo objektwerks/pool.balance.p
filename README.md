@@ -1,6 +1,6 @@
 Pool Balance ( Personal Edition )
 ---------------------------------
->Pool cleaning, measurement and chemical balancing local app using ScalaFx, Scalikejdbc, Ox, HikariCP, H2 and Scala 3.
+>Pool cleaning, measurement and chemical balancing local app using ScalaFx, Scalikejdbc, Ox, HikariCP, H2, jDeploy and Scala 3.
 
 Build
 -----
