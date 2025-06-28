@@ -7,3 +7,4 @@ target/
 jdeploy
 jdeploy-bundle
 package-lock.json
+sbt-launch.jar
