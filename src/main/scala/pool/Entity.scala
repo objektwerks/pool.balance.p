@@ -3,7 +3,6 @@ package pool
 import java.time.{LocalDate, LocalTime, LocalDateTime}
 import java.time.format.DateTimeFormatter
 
-import scalafx.Includes.*
 import scalafx.beans.property.ObjectProperty
 
 object Error:
