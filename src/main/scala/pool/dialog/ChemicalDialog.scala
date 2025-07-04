@@ -6,7 +6,7 @@ import scalafx.scene.layout.{Region, VBox}
 import scalafx.scene.control.{ButtonType, ComboBox, DatePicker, Dialog, Separator}
 import scalafx.scene.control.ButtonBar.ButtonData
 
-import pool.{App, Chemical, Context, Entity, UnitOfMeasure, TypeOfChemical}
+import pool.{App, Chemical, Context, UnitOfMeasure, TypeOfChemical}
 import pool.Entity.*
 import pool.control.{Converter, DoubleTextField}
 

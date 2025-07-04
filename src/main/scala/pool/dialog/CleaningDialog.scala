@@ -5,7 +5,7 @@ import scalafx.scene.layout.Region
 import scalafx.scene.control.{ButtonType, CheckBox, DatePicker, Dialog}
 import scalafx.scene.control.ButtonBar.ButtonData
 
-import pool.{App, Context, Entity, Cleaning}
+import pool.{App, Context, Cleaning}
 import pool.Entity.*
 
 final class CleaningDialog(context: Context, cleaning: Cleaning) extends Dialog[Cleaning]:

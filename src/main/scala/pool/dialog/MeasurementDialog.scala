@@ -5,7 +5,7 @@ import scalafx.scene.layout.Region
 import scalafx.scene.control.{ButtonType, DatePicker, Dialog}
 import scalafx.scene.control.ButtonBar.ButtonData
 
-import pool.{App, Context, Entity, Measurement}
+import pool.{App, Context, Measurement}
 import pool.Entity.*
 import pool.control.TextSlider.*
 
