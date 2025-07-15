@@ -2,6 +2,15 @@ Pool Balance ( Personal Edition )
 ---------------------------------
 >Pool cleaning, measurement and chemical balancing local app using ScalaFx, Scalikejdbc, Ox, HikariCP, H2, jDeploy and Scala 3.
 
+Install
+-------
+1. Select [Pool Balance](https://www.jdeploy.com/~poolbalance)
+2. Select a platform to download a compressed app installer.
+3. Decompress app installer.
+4. Install app by double-clicking app installer.
+5. Select app icon to launch app.
+>This install has been tested on macOS.
+
 Build
 -----
 1. ```sbt clean compile```
