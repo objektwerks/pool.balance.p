@@ -10,11 +10,11 @@
       "type": "git",
       "url": "git+https://github.com/objektwerks/pool.balance.p.git"
   },
-  "version": "3.1.0",
+  "version": "4.0.0",
   "jdeploy": {
       "jdk": false,
       "javaVersion": "24",
-      "jar": ".assembly/pool-balance-3.1.0.jar",
+      "jar": ".assembly/pool-balance-4.0.0.jar",
       "javafx": true,
       "javafxVersion": "24.0.1",
       "title": "Pool Balance"
