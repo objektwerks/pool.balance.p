@@ -29,19 +29,18 @@ Assembly
 
 Execute
 -------
-1. ```java -jar .assembly/poolbalance-4.0.0.jar```
+1. ```java -jar .assembly/poolbalance-$version.jar```
 
 Deploy
 ------
 1. edit build.sbt ( jarVersion + version )
 2. edit app.conf ( about > alert > contentText )
 3. edit package.json ( version + jdeploy / jar )
-4. edit readme
-5. sbt clean test assembly copyAssemblyJar
-6. perform github release ( from https://github.com/objektwerks/pool.balance.p )
-7. npm login
-8. jdeploy publish ( to https://www.jdeploy.com/~poolbalance )
-9. check email for npm message
+4. sbt clean test assembly copyAssemblyJar
+5. perform github release ( from https://github.com/objektwerks/pool.balance.p )
+6. npm login
+7. jdeploy publish ( to https://www.jdeploy.com/~poolbalance )
+8. check email for npm message
 >See [jDeploy Docs](https://www.jdeploy.com/docs/manual/#_getting_started) for details.
 
 jDeploy Install
