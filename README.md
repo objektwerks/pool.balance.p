@@ -59,7 +59,7 @@ NPM Versioning
 
 NPM Registry
 ------------
->PoolBalance is deployed to: https://www.npmjs.com/package/poolbalance
+>Pool Balance is deployed to: https://www.npmjs.com/package/poolbalance
 
 Features
 --------
