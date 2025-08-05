@@ -8,12 +8,12 @@ create index if not exists pool_name_idx ON pool(name);
 create table if not exists cleaning (
   id long primary key auto_increment,
   pool_id long references pool(id),
-  brush bool not null,
-  net bool not null,
-  skimmer_basket bool not null,
-  pump_basket bool not null,
-  pump_filter bool not null,
-  vacuum bool not null,
+  brush boolean not null,
+  net boolean not null,
+  skimmer_basket boolean not null,
+  pump_basket boolean not null,
+  pump_filter boolean not null,
+  vacuum boolean not null,
   cleaned timestamp not null
 );
 create index if not exists cleaning_cleaned_idx ON cleaning(cleaned);
